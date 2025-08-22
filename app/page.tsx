@@ -18,6 +18,7 @@ import Image from "next/image"
 import React, { useState } from "react"
 import TextType from "@/components/texttype";
 import SplitText from "@/components/splittext";
+import { motion } from "framer-motion";
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
@@ -168,54 +169,30 @@ export default function Portfolio() {
           <div className="space-y-8">
             <div className="space-y-4 text-left">
               <div className="block text-left">
-                <TextType
-                  text="Hello, It's Me"
-                  as="p"
-                  className="text-xl text-gray-300 text-left"
-                  typingSpeed={40}
-                  showCursor={false}
-                  loop={false}
-                  onSentenceComplete={() => setShowSecond(true)}
+                <p className="text-xl text-gray-300 text-left">Hello, It's Me</p>
+              </div>
+              <div className="block text-left">
+                <h1 className="text-5xl lg:text-6xl font-bold text-left">Marvin Ngalonde</h1>
+              </div>
+              <div className="block text-left">
+                <SplitText
+                  text="And I'm a Full Stack Developer"
+                  className="text-2xl text-left"
+                  splitType="words"
+                  delay={80}
+                  duration={0.7}
                 />
               </div>
-              {showSecond && (
-                <div className="block text-left">
-                  <TextType
-                    text="Marvin Ngalonde"
-                    as="h1"
-                    className="text-5xl lg:text-6xl font-bold text-left"
-                    typingSpeed={60}
-                    showCursor={true}
-                    cursorClassName="text-cyan-400"
-                    loop={false}
-                    onSentenceComplete={() => setShowThird(true)}
-                  />
-                </div>
-              )}
-              {showThird && (
-                <div className="block text-left">
-                  <SplitText
-                    text="And I'm a Full Stack Developer"
-                    className="text-2xl text-left"
-                    splitType="words"
-                    delay={80}
-                    duration={0.7}
-                    onLetterAnimationComplete={() => setShowFourth(true)}
-                  />
-                </div>
-              )}
-              {showFourth && (
-                <div className="block text-left">
-                  <SplitText
-                    text="Highly passionate and driven tech enthusiast with a strong foundation in mobile and web development, specializing in React, Node.js, and modern web technologies."
-                    className="text-gray-400 text-lg max-w-md text-left"
-                    splitType="words"
-                    delay={60}
-                    duration={0.6}
-                    textAlign="left"
-                  />
-                </div>
-              )}
+              <div className="block text-left">
+                <SplitText
+                  text="Highly passionate and driven tech enthusiast with a strong foundation in mobile and web development, specializing in React, Node.js, and modern web technologies."
+                  className="text-gray-400 text-lg max-w-md text-left"
+                  splitType="words"
+                  textAlign="left"
+                  delay={60}
+                  duration={0.6}
+                />
+              </div>
             </div>
 
             <div className="flex items-center space-x-4">
@@ -246,8 +223,10 @@ export default function Portfolio() {
             </div>
 
             <a
-              href="./Marvin-Ngalonde-Resume.pdf"
-              download
+             href="./Marvin-Ngalonde-Resume.pdf"
+             download="Marvin-Ngalonde-Resume.pdf"
+             target="_blank"
+             rel="noopener noreferrer"
             >
               <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 px-8 py-3 rounded-full font-semibold">
                 Download CV
@@ -257,7 +236,11 @@ export default function Portfolio() {
           </div>
 
           <div className="flex justify-center lg:justify-end">
-            <div className="hexagon-container">
+            <motion.div
+              className="hexagon-container"
+              animate={{ y: [0, -20, 0, 20, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
               {/* <div className="hexagon-glow"></div> */}
               <div className="hexagon-image">
                 <Image
@@ -268,7 +251,7 @@ export default function Portfolio() {
                   className="object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
