@@ -11,7 +11,7 @@ export default function About() {
               {/* <div className="hexagon-glow-small"></div> */}
               <div className="hexagon-image-small">
                 <Image
-                  src="./ma.png"
+                  src="./portfolio/ma.png"
                   alt="Marvin Ngalonde"
                   width={300}
                   height={300}

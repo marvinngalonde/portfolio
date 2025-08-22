@@ -17,10 +17,44 @@ import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, Twitter } from "lu
 import Image from "next/image"
 import React from "react"
 
-export default function Portfolio() {
+const NAV_ITEMS = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
+  { id: "portfolio", label: "Portfolio" },
+  { id: "contact", label: "Contact" },
+];
 
+export default function Portfolio() {
+  const [activeSection, setActiveSection] = React.useState("home");
   const [selectedProject, setSelectedProject] = React.useState('')
   const [preview, setPreview] = React.useState(false)
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const offsets = NAV_ITEMS.map(item => {
+        const el = document.getElementById(item.id);
+        if (!el) return { id: item.id, offset: Infinity };
+        const rect = el.getBoundingClientRect();
+        return { id: item.id, offset: Math.abs(rect.top - 80) }; // 80 = nav height offset
+      });
+      const closest = offsets.reduce((a, b) => (a.offset < b.offset ? a : b));
+      setActiveSection(closest.id);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // set on mount
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleNavClick = (id: string) => {
+    setActiveSection(id);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   const handleProjectClick = (projectUrl: string) => {
     console.log(`Opening project: ${projectUrl}`);
@@ -32,31 +66,22 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold">Portfolio.</div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#home" className="text-cyan-400 hover:text-cyan-300 transition-colors">
-                Home
-              </a>
-              <a href="#about" className="text-gray-300 hover:text-cyan-400 transition-colors">
-                About
-              </a>
-              <a href="#experience" className="text-gray-300 hover:text-cyan-400 transition-colors">
-                Experience
-              </a>
-              <a href="#skills" className="text-gray-300 hover:text-cyan-400 transition-colors">
-                Skills
-              </a>
-              <a href="#portfolio" className="text-gray-300 hover:text-cyan-400 transition-colors">
-                Portfolio
-              </a>
-              <a href="#contact" className="text-gray-300 hover:text-cyan-400 transition-colors">
-                Contact
-              </a>
-            </div>
-          </div>
+      <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none">
+        <div className="pointer-events-auto bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-full shadow-lg px-8 py-3 flex items-center space-x-8 mx-auto max-w-2xl">
+          {NAV_ITEMS.map(item => (
+            <button
+              key={item.id}
+              onClick={() => handleNavClick(item.id)}
+              className={`transition-colors px-4 py-2 rounded-full font-medium
+                ${activeSection === item.id
+                  ? " text-cyan-400 "
+                  : "text-gray-300 hover:text-cyan-400"}
+              `}
+              style={{ outline: "none", border: "none", background: "none" }}
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
       </nav>
 
@@ -122,7 +147,7 @@ export default function Portfolio() {
               {/* <div className="hexagon-glow"></div> */}
               <div className="hexagon-image">
                 <Image
-                  src="./me.png"
+                  src="./portfolio/me.png"
                   alt="Marvin Ngalonde"
                   width={400}
                   height={400}
@@ -140,7 +165,7 @@ export default function Portfolio() {
               {/* <div className="hexagon-glow-small"></div> */}
               <div className="hexagon-image-small">
                 <Image
-                  src="./ma.png"
+                  src="./portfolio/ma.png"
                   alt="Marvin Ngalonde"
                   width={300}
                   height={300}
@@ -331,7 +356,7 @@ export default function Portfolio() {
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./neo.png"
+                  src="./portfolio/neo.png"
                   alt="Neocentric Interiors"
                   width={300}
                   height={200}
@@ -355,7 +380,7 @@ export default function Portfolio() {
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./posy.png"
+                  src="./portfolio/posy.png"
                   alt="posy"
                   width={300}
                   height={200}
@@ -383,7 +408,7 @@ export default function Portfolio() {
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./shop.jpg"
+                  src="./portfolio/shop.jpg"
                   alt="Mobile POS"
                   width={300}
                   height={200}
@@ -408,7 +433,7 @@ export default function Portfolio() {
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./gym.png"
+                  src="./portfolio/gym.png"
                   alt="Gym Management System"
                   width={300}
                   height={200}
@@ -434,7 +459,7 @@ export default function Portfolio() {
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./rh.png"
+                  src="./portfolio/rh.png"
                   alt="Web Development"
                   width={300}
                   height={200}
@@ -519,7 +544,7 @@ export default function Portfolio() {
                   <Github size={20} />
                 </a>
                 <a
-                  href="https://linkedin.com/in/marvinngalonde"
+                  href="https://www.linkedin.com/in/ngalonde-marvin-393555331/"
                   className="w-12 h-12 rounded-full border-2 border-cyan-400 flex items-center justify-center hover:bg-cyan-400 hover:text-gray-900 transition-all"
                 >
                   <Linkedin size={20} />
@@ -580,20 +605,20 @@ export default function Portfolio() {
       </footer>
 
       <Dialog open={preview} onOpenChange={() => setPreview(false)}>
-  <DialogContent className="w-[80vw] h-[80vh] max-w-[90vw] p-0">
-    <DialogHeader className="flex justify-between items-center p-4">
-      <DialogTitle className="truncate max-w-[70%]">{selectedProject}</DialogTitle>
-    </DialogHeader>
+        <DialogContent className="w-[112vw] h-[80vh] max-w-[126vw] p-0">
+          <DialogHeader className="flex justify-between items-center p-4">
+            <DialogTitle className="truncate max-w-[70%]">{selectedProject}</DialogTitle>
+          </DialogHeader>
 
-    {selectedProject && (
-      <iframe
-        src={selectedProject}
-        className="w-full h-[calc(100%-56px)] rounded-b-lg border-0"
-        title={`Project - ${selectedProject}`}
-      />
-    )}
-  </DialogContent>
-</Dialog>
+          {selectedProject && (
+            <iframe
+              src={selectedProject}
+              className="w-full h-[calc(100%-56px)] rounded-b-lg border-0"
+              title={`Project - ${selectedProject}`}
+            />
+          )}
+        </DialogContent>
+      </Dialog>
 
    
       </div>
