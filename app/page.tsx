@@ -15,7 +15,7 @@ import {
 import { X } from "lucide-react"
 import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, Twitter } from "lucide-react"
 import Image from "next/image"
-import React from "react"
+import React, { useState } from "react"
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
@@ -30,6 +30,10 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = React.useState("home");
   const [selectedProject, setSelectedProject] = React.useState('')
   const [preview, setPreview] = React.useState(false)
+
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<string|null>(null);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -62,6 +66,37 @@ export default function Portfolio() {
     setPreview(true);
   };
   
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setResult(null);
+    try {
+      const res = await fetch('/portfolio/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: `${form.subject ? `Subject: ${form.subject}\n` : ''}${form.message}`,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setResult('Message sent successfully!');
+        setForm({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setResult(data.message || 'Error sending message.');
+      }
+    } catch (err) {
+      setResult('Error sending message.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -373,10 +408,39 @@ export default function Portfolio() {
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">React</span>
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">TypeScript</span>
                   </div>
-                  <ExternalLink size={20} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  <ExternalLink onClick={() => handleProjectClick('https://neocentricinteriors.co.zw')} size={20} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
                 </div>
               </div>
             </Card>
+
+            <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
+              <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
+                <Image
+                  src="./portfolio/rh.png"
+                  alt="Web Development"
+                  width={300}
+                  height={200}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl text-white font-semibold mb-2">Royals Haven</h3>
+                <p className="text-gray-400 mb-4">
+                  Modern web application built with React, TypeScript, and TailwindCSS for interior design showcase.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex space-x-2">
+                    <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">React</span>
+                    <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Node.js</span>
+                  </div>
+
+                  <ExternalLink size={20} onClick={() => handleProjectClick('https://royalshaven.co.zw')} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
+
+
+                </div>
+              </div>
+            </Card>
+
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
@@ -388,7 +452,7 @@ export default function Portfolio() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl text-white font-semibold mb-2">Business Management System</h3>
+                <h3 className="text-xl text-white font-semibold mb-2">BMS & POS</h3>
                 <p className="text-gray-400 mb-4">
                   Comprehensive POS and business management solution with React, NextJS, and MySQL.
                 </p>
@@ -425,6 +489,7 @@ export default function Portfolio() {
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Flutter</span>
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Supabase</span>
                   </div>
+                  
                   <ExternalLink size={20} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
                 </div>
               </div>
@@ -441,7 +506,7 @@ export default function Portfolio() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl text-white font-semibold mb-2">Gym Management System</h3>
+                <h3 className="text-xl text-white font-semibold mb-2">Gym Management System Python Intergration</h3>
                 <p className="text-gray-400 mb-4">
                   Complete gym management solution with member tracking, built with PHP, Python, and MySQL.
                 </p>
@@ -456,33 +521,7 @@ export default function Portfolio() {
               </div>
             </Card>
 
-            <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
-              <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
-                <Image
-                  src="./portfolio/rh.png"
-                  alt="Web Development"
-                  width={300}
-                  height={200}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl text-white font-semibold mb-2">Royals Haven</h3>
-                <p className="text-gray-400 mb-4">
-                  Modern web application built with React, TypeScript, and TailwindCSS for interior design showcase.
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="flex space-x-2">
-                    <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">React</span>
-                    <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Node.js</span>
-                  </div>
-
-                  <ExternalLink size={20} onClick={() => handleProjectClick('https://royalshaven.co.zw')} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
-
-
-                </div>
-              </div>
-            </Card>
+          
 
 
           </div>
@@ -553,22 +592,30 @@ export default function Portfolio() {
             </div>
 
             <Card className="bg-gray-800 border-gray-700 p-8">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">Name</label>
                     <input
                       type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none"
                       placeholder="Your Name"
+                      required
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Email</label>
                     <input
                       type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none"
                       placeholder="your@email.com"
+                      required
                     />
                   </div>
                 </div>
@@ -576,6 +623,9 @@ export default function Portfolio() {
                   <label className="block text-sm font-medium mb-2">Subject</label>
                   <input
                     type="text"
+                    name="subject"
+                    value={form.subject}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none"
                     placeholder="Project Discussion"
                   />
@@ -583,14 +633,25 @@ export default function Portfolio() {
                 <div>
                   <label className="block text-sm font-medium mb-2">Message</label>
                   <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
                     rows={5}
                     className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none resize-none"
                     placeholder="Tell me about your project..."
+                    required
                   ></textarea>
                 </div>
-                <Button className="w-full bg-cyan-400 hover:bg-cyan-500 text-gray-900 py-3 rounded-lg font-semibold">
-                  Send Message
+                <Button
+                  className="w-full bg-cyan-400 hover:bg-cyan-500 text-gray-900 py-3 rounded-lg font-semibold"
+                  type="submit"
+                  disabled={loading}
+                >
+                  {loading ? 'Sending...' : 'Send Message'}
                 </Button>
+                {result && (
+                  <div className={`text-center text-sm mt-2 ${result.includes('success') ? 'text-green-400' : 'text-red-400'}`}>{result}</div>
+                )}
               </form>
             </Card>
           </div>
@@ -605,22 +666,23 @@ export default function Portfolio() {
       </footer>
 
       <Dialog open={preview} onOpenChange={() => setPreview(false)}>
-        <DialogContent className="w-[112vw] h-[80vh] max-w-[126vw] p-0">
-          <DialogHeader className="flex justify-between items-center p-4">
-            <DialogTitle className="truncate max-w-[70%]">{selectedProject}</DialogTitle>
-          </DialogHeader>
-
+        <DialogContent className="w-[90vw] max-w-[90vw] h-[95vh] p-0 mx-auto top-[50%] translate-y-[-50%] gap-0 flex flex-col">
           {selectedProject && (
-            <iframe
-              src={selectedProject}
-              className="w-full h-[calc(100%-56px)] rounded-b-lg border-0"
-              title={`Project - ${selectedProject}`}
-            />
+            <>
+              <div className="px-4 py-2 bg-background border-b text-base font-semibold truncate">
+                <DialogTitle>{selectedProject}</DialogTitle>
+              </div>
+              <iframe
+                src={selectedProject}
+                className="w-full h-full flex-1 rounded-b-lg border-0"
+                title={`Project - ${selectedProject}`}
+              />
+            </>
           )}
         </DialogContent>
       </Dialog>
-
    
-      </div>
+
+    </div>
   )
 }
