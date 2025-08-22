@@ -39,7 +39,7 @@ const [selectedProject, setSelectedProject] = React.useState('')
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./portfolio/neo.png"
+                  src="./neo.png"
                   alt="Neocentric Interiors"
                   width={300}
                   height={200}
@@ -63,7 +63,7 @@ const [selectedProject, setSelectedProject] = React.useState('')
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./portfolio/posy.png"
+                  src="./posy.png"
                   alt="posy"
                   width={300}
                   height={200}
@@ -91,7 +91,7 @@ const [selectedProject, setSelectedProject] = React.useState('')
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./portfolio/shop.jpg"
+                  src="./shop.jpg"
                   alt="Mobile POS"
                   width={300}
                   height={200}
@@ -116,7 +116,7 @@ const [selectedProject, setSelectedProject] = React.useState('')
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./portfolio/gym.png"
+                  src="./gym.png"
                   alt="Gym Management System"
                   width={300}
                   height={200}
@@ -142,7 +142,7 @@ const [selectedProject, setSelectedProject] = React.useState('')
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./portfolio/rh.png"
+                  src="./rh.png"
                   alt="Web Development"
                   width={300}
                   height={200}

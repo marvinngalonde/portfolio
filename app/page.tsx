@@ -12,7 +12,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog"
 
-import { X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, Twitter } from "lucide-react"
 import Image from "next/image"
 import React, { useState } from "react"
@@ -30,6 +30,7 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = React.useState("home");
   const [selectedProject, setSelectedProject] = React.useState('')
   const [preview, setPreview] = React.useState(false)
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [loading, setLoading] = useState(false);
@@ -54,6 +55,7 @@ export default function Portfolio() {
 
   const handleNavClick = (id: string) => {
     setActiveSection(id);
+    setMobileNavOpen(false); // close mobile nav on click
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -101,8 +103,9 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Navigation */}
-      <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center pointer-events-none">
-        <div className="pointer-events-auto bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-full shadow-lg px-8 py-3 flex items-center space-x-8 mx-auto max-w-2xl">
+      <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center">
+        {/* Desktop Nav */}
+        <div className="hidden sm:flex pointer-events-auto bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-full shadow-lg px-8 py-3 items-center space-x-8 mx-auto max-w-2xl">
           {NAV_ITEMS.map(item => (
             <button
               key={item.id}
@@ -118,6 +121,36 @@ export default function Portfolio() {
             </button>
           ))}
         </div>
+        {/* Mobile Nav */}
+        <div className="sm:hidden pointer-events-auto w-full flex justify-between items-center px-4 py-3 bg-gray-900/80 border border-gray-800 rounded-full shadow-lg mx-2">
+          <span className="font-bold text-lg text-cyan-400">Marvin</span>
+          <button
+            onClick={() => setMobileNavOpen(!mobileNavOpen)}
+            className="text-cyan-400 focus:outline-none"
+            aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileNavOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+        {/* Mobile Dropdown */}
+        {mobileNavOpen && (
+          <div className="sm:hidden absolute top-16 left-0 right-0 mx-2 bg-gray-900/95 border border-gray-800 rounded-xl shadow-lg flex flex-col items-center space-y-2 py-4 z-50 animate-fade-in">
+            {NAV_ITEMS.map(item => (
+              <button
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                className={`w-full text-center transition-colors px-4 py-2 rounded-lg font-medium
+                  ${activeSection === item.id
+                    ? " text-cyan-400 "
+                    : "text-gray-300 hover:text-cyan-400"}
+                `}
+                style={{ outline: "none", border: "none", background: "none" }}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
       </nav>
 
     
@@ -200,7 +233,7 @@ export default function Portfolio() {
               {/* <div className="hexagon-glow-small"></div> */}
               <div className="hexagon-image-small">
                 <Image
-                  src="./portfolio/ma.png"
+                  src="./ma.png"
                   alt="Marvin Ngalonde"
                   width={300}
                   height={300}
@@ -391,7 +424,7 @@ export default function Portfolio() {
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./portfolio/neo.png"
+                  src="./neo.png"
                   alt="Neocentric Interiors"
                   width={300}
                   height={200}
@@ -416,7 +449,7 @@ export default function Portfolio() {
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./portfolio/rh.png"
+                  src="./rh.png"
                   alt="Web Development"
                   width={300}
                   height={200}
@@ -444,7 +477,7 @@ export default function Portfolio() {
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./portfolio/posy.png"
+                  src="./posy.png"
                   alt="posy"
                   width={300}
                   height={200}
@@ -472,7 +505,7 @@ export default function Portfolio() {
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./portfolio/shop.jpg"
+                  src="./shop.jpg"
                   alt="Mobile POS"
                   width={300}
                   height={200}
@@ -498,7 +531,7 @@ export default function Portfolio() {
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
-                  src="./portfolio/gym.png"
+                  src="./gym.png"
                   alt="Gym Management System"
                   width={300}
                   height={200}
