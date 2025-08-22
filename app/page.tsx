@@ -182,7 +182,7 @@ export default function Portfolio() {
               {/* <div className="hexagon-glow"></div> */}
               <div className="hexagon-image">
                 <Image
-                  src="./portfolio/me.png"
+                  src="./me.png"
                   alt="Marvin Ngalonde"
                   width={400}
                   height={400}
