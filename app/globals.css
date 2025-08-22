@@ -3,6 +3,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* globals.css */
+html {
+  scroll-behavior: smooth;
+}
+
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -127,7 +133,10 @@
 .hexagon-container {
   position: relative;
   width: 400px;
-  height: 400px;
+  height: 450px;
+  
+
+  
 }
 
 .hexagon-glow {
@@ -142,6 +151,7 @@
   filter: blur(8px);
   opacity: 0.8;
   animation: pulse 2s ease-in-out infinite alternate;
+    
 }
 
 .hexagon-image {
@@ -149,11 +159,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 360px;
-  height: 360px;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  overflow: hidden;
-  z-index: 10;
+  width: 100%;
+  height: 100%;
+  /* clip-path: polygon(50% 0%, 100% 0%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); */
+ 
+  
+  
 }
 
 .hexagon-image img {
@@ -176,11 +187,12 @@
   transform: translate(-50%, -50%);
   width: 280px;
   height: 280px;
-  background: linear-gradient(45deg, #00bcd4, #00e5ff);
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  
+  /* clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); */
   filter: blur(6px);
   opacity: 0.8;
   animation: pulse 2s ease-in-out infinite alternate;
+  border:5px solid #00e5ff;
 }
 
 .hexagon-image-small {
@@ -189,10 +201,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 260px;
-  height: 260px;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  height: 299px;
+  /* clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); */
   overflow: hidden;
-  z-index: 10;
+  
 }
 
 .hexagon-image-small img {
