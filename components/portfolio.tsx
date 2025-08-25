@@ -60,6 +60,7 @@ const [selectedProject, setSelectedProject] = React.useState('')
                 </div>
               </div>
             </Card>
+            
             <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image

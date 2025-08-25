@@ -470,7 +470,7 @@ export default function Portfolio() {
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">React</span>
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">TypeScript</span>
                   </div>
-                  <ExternalLink onClick={() => handleProjectClick('https://neocentricinteriors.co.zw')} size={20} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  <ExternalLink onClick={() => handleProjectClick('https://marvinngalonde.github.io/neocentric-interiors/')} size={20} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
                 </div>
               </div>
             </Card>
@@ -496,7 +496,7 @@ export default function Portfolio() {
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Node.js</span>
                   </div>
 
-                  <ExternalLink size={20} onClick={() => handleProjectClick('https://royalshaven.co.zw')} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  <ExternalLink size={20} onClick={() => handleProjectClick('https://marvinngalonde.github.io/royalshaven/')} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
 
 
                 </div>
