@@ -19,6 +19,7 @@ import React, { useState } from "react"
 import TextType from "@/components/texttype";
 import SplitText from "@/components/splittext";
 import { motion } from "framer-motion";
+import Ballpit from "@/components/ballpit"; 
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
@@ -109,7 +110,7 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-white text-gray-900">
       {/* Navigation */}
       <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center">
         {/* Desktop Nav */}
@@ -164,12 +165,28 @@ export default function Portfolio() {
     
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center pt-20">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+      <section
+        id="home"
+        className="relative overflow-hidden min-h-screen flex items-center pt-20"
+        style={{ background: "#0f172a" }} // optional: ensure contrast for balls
+      >
+        {/* Ballpit absolutely fills the section, sits behind content */}
+        <div className="absolute inset-0 bg-white w-full h-full pointer-events-none z-0">
+          <Ballpit
+            className="w-full h-full"
+            count={20}
+            gravity={0}
+            colors={["#06b6d4", "#0ea5e9", "#67e8f9"]}
+            friction={0.9975}
+            wallbounce={0.95}
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4 text-left">
               <div className="block text-left">
-                <p className="text-xl text-gray-300 text-left">Hello, It's Me</p>
+                <p className="text-xl text-gray-900/80 text-left">Hello, It's Me</p>
               </div>
               <div className="block text-left">
                 <h1 className="text-5xl lg:text-6xl font-bold text-left">Marvin Ngalonde</h1>
@@ -179,18 +196,19 @@ export default function Portfolio() {
                   text="And I'm a Full Stack Developer"
                   className="text-2xl text-left"
                   splitType="words"
-                  delay={80}
+                  delay={100}
                   duration={0.7}
                 />
               </div>
               <div className="block text-left">
                 <SplitText
                   text="Highly passionate and driven tech enthusiast with a strong foundation in mobile and web development, specializing in React, Node.js, and modern web technologies."
-                  className="text-gray-400 text-lg max-w-md text-left"
+                  className="text-gray-900/80 text-lg max-w-md text-left"
                   splitType="words"
                   textAlign="left"
-                  delay={60}
-                  duration={0.6}
+                  delay={110}
+                  duration={0.7}
+                  
                 />
               </div>
             </div>
@@ -223,16 +241,15 @@ export default function Portfolio() {
             </div>
 
             <a
-             href="./Marvin-Ngalonde-Resume.pdf"
-             download="Marvin-Ngalonde-Resume.pdf"
-             target="_blank"
-             rel="noopener noreferrer"
+              href="./Marvin-Ngalonde-Resume.pdf"
+              download="Marvin-Ngalonde-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 px-8 py-3 rounded-full font-semibold">
                 Download CV
               </Button>
             </a>
-
           </div>
 
           <div className="flex justify-center lg:justify-end">
@@ -255,6 +272,9 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+
+
+      
   <section id="about"  className="py-20 bg-gray-800/50">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div className="flex justify-center lg:justify-start">
@@ -262,7 +282,7 @@ export default function Portfolio() {
               {/* <div className="hexagon-glow-small"></div> */}
               <div className="hexagon-image-small">
                 <Image
-                  src="./ma.png"
+                  src="./abt.png"
                   alt="Marvin Ngalonde"
                   width={300}
                   height={300}
@@ -280,7 +300,7 @@ export default function Portfolio() {
               <p className="text-xl text-cyan-400 mb-6">Full Stack Developer!</p>
             </div>
 
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-gray-900/80 leading-relaxed">
               I'm a highly passionate and driven tech enthusiast with over 4 years of experience in mobile and web
               development. I specialize in React, Node.js, and low-code platforms like FlutterFlow, with expertise in
               building cross-platform applications that solve real-world business challenges. I thrive in dynamic
@@ -290,25 +310,25 @@ export default function Portfolio() {
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <span className="text-cyan-400 font-semibold">Location:</span>
-                <p className="text-gray-300">Harare, Zimbabwe</p>
+                <p className="text-gray-900/80">Harare, Zimbabwe</p>
               </div>
               <div>
                 <span className="text-cyan-400 font-semibold">Experience:</span>
-                <p className="text-gray-300">4+ Years</p>
+                <p className="text-gray-900/80">4+ Years</p>
               </div>
               <div>
                 <span className="text-cyan-400 font-semibold">Email:</span>
-                <p className="text-gray-300">ngalondemarvin@gmail.com</p>
+                <p className="text-gray-900/80">ngalondemarvin@gmail.com</p>
               </div>
               <div>
                 <span className="text-cyan-400 font-semibold">Phone:</span>
-                <p className="text-gray-300">+263 787 062 575</p>
+                <p className="text-gray-900/80">+263 787 062 575</p>
               </div>
             </div>
 
-            <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 px-8 py-3 rounded-full font-semibold">
+            {/* <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 px-8 py-3 rounded-full font-semibold"> */}
 
-            </Button>
+            {/* </Button> */}
           </div>
         </div>
       </section>
@@ -322,18 +342,18 @@ export default function Portfolio() {
           </div>
 
           <div className="space-y-8">
-            <Card className="bg-gray-800 border-gray-700 p-8">
+            <Card className="bg-gray-800/50 elevation-2 shadow-4 p-8">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-semibold text-cyan-400">Full Stack Developer</h3>
-                  <p className="text-lg">Kimtronix Global</p>
+                  <p className="text-lg text-white">Kimtronix Global</p>
                 </div>
-                <div className="text-gray-400">
+                <div className="text-gray-900">
                   <p>January 2023 – Present</p>
                   <p>Harare, Zimbabwe</p>
                 </div>
               </div>
-              <ul className="text-gray-300 space-y-2">
+              <ul className="text-gray-900/80 space-y-2">
                 <li>
                   • Developed and maintained cross-platform web applications using React, Node.js, and modern web
                   technologies
@@ -346,36 +366,36 @@ export default function Portfolio() {
               </ul>
             </Card>
 
-            <Card className="bg-gray-800 border-gray-700 p-8">
+            <Card className="bg-gray-800/50 elevation-2 shadow-4 p-8">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-semibold text-cyan-400">Mobile App Developer</h3>
-                  <p className="text-lg">CyberSeIp Incorporation</p>
+                  <p className="text-lg text-white">CyberSeIp Incorporation</p>
                 </div>
-                <div className="text-gray-400">
+                <div className="text-gray-900">
                   <p>October 2024 – Present</p>
                   <p>Harare, Zimbabwe</p>
                 </div>
               </div>
-              <ul className="text-gray-300 space-y-2">
+              <ul className="text-gray-900/80 space-y-2">
                 <li>• Developed mobile applications using Flutter and FlutterFlow with cross-platform compatibility</li>
                 <li>• Managed integration and linking of applications with Supabase backend</li>
                 <li>• Contributed to the full mobile app development lifecycle, from concept to deployment</li>
               </ul>
             </Card>
 
-            <Card className="bg-gray-800 border-gray-700 p-8">
+            <Card className="bg-gray-800/50 border-none elevation-2 shadow-4 p-8">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-semibold text-cyan-400">Web Developer</h3>
-                  <p className="text-lg">Verdsoft Private Limited</p>
+                  <p className="text-lg text-white">Verdsoft Private Limited</p>
                 </div>
-                <div className="text-gray-400">
+                <div className="text-gray-900">
                   <p>January 2021 – December 2023</p>
                   <p>Harare, Zimbabwe</p>
                 </div>
               </div>
-              <ul className="text-gray-300 space-y-2">
+              <ul className="text-gray-900/80 space-y-2">
                 <li>• Developed web applications using PHP, Python scripting, HTML, CSS, and JavaScript</li>
                 <li>• Implemented responsive and user-friendly interfaces using fundamental web technologies</li>
                 <li>• Collaborated on various web projects, contributing to design, development, and testing phases</li>
@@ -391,13 +411,13 @@ export default function Portfolio() {
             <h2 className="text-4xl font-bold mb-4">
               My <span className="text-cyan-400">Skills</span>
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">Technologies and tools I work with to bring ideas to life</p>
+            <p className="text-gray-900 max-w-2xl mx-auto">Technologies and tools I work with to bring ideas to life</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-cyan-400">Frontend</h3>
-              <div className="space-y-2 text-gray-300">
+              <div className="space-y-2 text-gray-900/80">
                 <p>ReactJS</p>
                 <p>NextJS</p>
                 <p>TypeScript</p>
@@ -408,7 +428,7 @@ export default function Portfolio() {
             </div>
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-cyan-400">Backend</h3>
-              <div className="space-y-2 text-gray-300">
+              <div className="space-y-2 text-gray-900/80">
                 <p>Node.js</p>
                 <p>Django</p>
                 <p>Flask</p>
@@ -419,7 +439,7 @@ export default function Portfolio() {
             </div>
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-cyan-400">Databases</h3>
-              <div className="space-y-2 text-gray-300">
+              <div className="space-y-2 text-gray-900/80">
                 <p>MySQL</p>
                 <p>PostgreSQL</p>
                 <p>MongoDB</p>
@@ -429,7 +449,7 @@ export default function Portfolio() {
             </div>
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-cyan-400">Tools</h3>
-              <div className="space-y-2 text-gray-300">
+              <div className="space-y-2 text-gray-900/80">
                 <p>Docker</p>
                 <p>Vercel</p>
                 <p>GitHub Actions</p>
@@ -450,7 +470,7 @@ export default function Portfolio() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
+            <Card className="bg-white border-gray-200 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
                   src="./neo.png"
@@ -461,8 +481,8 @@ export default function Portfolio() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl text-white font-semibold mb-2">Neocentric Interiors</h3>
-                <p className="text-gray-400 mb-4">
+                <h3 className="text-xl text-gray-900/80 font-semibold mb-2">Neocentric Interiors</h3>
+                <p className="text-gray-900/80 mb-4">
                   Modern web application built with React, TypeScript, and TailwindCSS for interior design showcase.
                 </p>
                 <div className="flex items-center justify-between">
@@ -470,12 +490,12 @@ export default function Portfolio() {
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">React</span>
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">TypeScript</span>
                   </div>
-                  <ExternalLink onClick={() => handleProjectClick('https://marvinngalonde.github.io/neocentric-interiors/')} size={20} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  <ExternalLink onClick={() => handleProjectClick('https://marvinngalonde.github.io/neocentric-interiors/')} size={20} className="text-gray-900 group-hover:text-cyan-400 transition-colors" />
                 </div>
               </div>
             </Card>
 
-            <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
+            <Card className="bg-white border-gray-200 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
                   src="./rh.png"
@@ -487,7 +507,7 @@ export default function Portfolio() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl text-white font-semibold mb-2">Royals Haven</h3>
-                <p className="text-gray-400 mb-4">
+                <p className="text-gray-900 mb-4">
                   Modern web application built with React, TypeScript, and TailwindCSS for interior design showcase.
                 </p>
                 <div className="flex items-center justify-between">
@@ -496,14 +516,14 @@ export default function Portfolio() {
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Node.js</span>
                   </div>
 
-                  <ExternalLink size={20} onClick={() => handleProjectClick('https://marvinngalonde.github.io/royalshaven/')} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  <ExternalLink size={20} onClick={() => handleProjectClick('https://marvinngalonde.github.io/royalshaven/')} className="text-gray-900/80 group-hover:text-cyan-400 transition-colors" />
 
 
                 </div>
               </div>
             </Card>
 
-            <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
+            <Card className="bg-white border-gray-200 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
                   src="./posy.png"
@@ -515,7 +535,7 @@ export default function Portfolio() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl text-white font-semibold mb-2">BMS & POS</h3>
-                <p className="text-gray-400 mb-4">
+                <p className="text-gray-900 mb-4">
                   Comprehensive POS and business management solution with React, NextJS, and MySQL.
                 </p>
                 <div className="flex items-center justify-between">
@@ -524,14 +544,14 @@ export default function Portfolio() {
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">TypeScript</span>
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">MySQL</span>
                   </div>
-                  <ExternalLink size={20} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  <ExternalLink size={20} className="text-gray-900 group-hover:text-cyan-400 transition-colors" />
                 </div>
               </div>
             </Card>
 
         
 
-            <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
+            <Card className="bg-white border-gray-200 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
                   src="./shop.jpg"
@@ -543,7 +563,7 @@ export default function Portfolio() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl text-white font-semibold mb-2">Mobile POS</h3>
-                <p className="text-gray-400 mb-4">
+                <p className="text-gray-900 mb-4">
                   Cross-platform mobile point-of-sale application built with Flutter and Supabase backend.
                 </p>
                 <div className="flex items-center justify-between">
@@ -552,12 +572,12 @@ export default function Portfolio() {
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Supabase</span>
                   </div>
                   
-                  <ExternalLink size={20} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  <ExternalLink size={20} className="text-gray-900 group-hover:text-cyan-400 transition-colors" />
                 </div>
               </div>
             </Card>
 
-            <Card className="bg-gray-800 border-gray-700 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
+            <Card className="bg-white border-gray-200 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                 <Image
                   src="./gym.png"
@@ -569,7 +589,7 @@ export default function Portfolio() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl text-white font-semibold mb-2">Gym Management System Python Intergration</h3>
-                <p className="text-gray-400 mb-4">
+                <p className="text-gray-900 mb-4">
                   Complete gym management solution with member tracking, built with PHP, Python, and MySQL.
                 </p>
                 <div className="flex items-center justify-between">
@@ -578,7 +598,7 @@ export default function Portfolio() {
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Python</span>
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">MySQL</span>
                   </div>
-                  <ExternalLink size={20} className="text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  <ExternalLink size={20} className="text-gray-900 group-hover:text-cyan-400 transition-colors" />
                 </div>
               </div>
             </Card>
@@ -594,13 +614,13 @@ export default function Portfolio() {
 
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-800/50">
+      <section id="contact" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">
               Get In <span className="text-cyan-400">Touch</span>
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-900 max-w-2xl mx-auto">
               Ready to work together? Let's discuss your next project and bring your ideas to life.
             </p>
           </div>
@@ -613,7 +633,7 @@ export default function Portfolio() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold">Email</h3>
-                  <p className="text-gray-400">ngalondemarvin@gmail.com</p>
+                  <p className="text-gray-900">ngalondemarvin@gmail.com</p>
                 </div>
               </div>
 
@@ -623,7 +643,7 @@ export default function Portfolio() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold">Phone</h3>
-                  <p className="text-gray-400">+263 787 062 575</p>
+                  <p className="text-gray-900">+263 787 062 575</p>
                 </div>
               </div>
 
@@ -633,7 +653,7 @@ export default function Portfolio() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold">Location</h3>
-                  <p className="text-gray-400">Harare, Zimbabwe</p>
+                  <p className="text-gray-900">Harare, Zimbabwe</p>
                 </div>
               </div>
 
@@ -653,7 +673,7 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <Card className="bg-gray-800 border-gray-700 p-8">
+            <Card className="bg-gray-800/50 border-none p-8">
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
@@ -663,7 +683,7 @@ export default function Portfolio() {
                       name="name"
                       value={form.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none"
+                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:border-cyan-400 focus:outline-none"
                       placeholder="Your Name"
                       required
                     />
@@ -675,7 +695,7 @@ export default function Portfolio() {
                       name="email"
                       value={form.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none"
+                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:border-cyan-400 focus:outline-none"
                       placeholder="your@email.com"
                       required
                     />
@@ -688,7 +708,7 @@ export default function Portfolio() {
                     name="subject"
                     value={form.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:border-cyan-400 focus:outline-none"
                     placeholder="Project Discussion"
                   />
                 </div>
@@ -699,13 +719,13 @@ export default function Portfolio() {
                     value={form.message}
                     onChange={handleChange}
                     rows={5}
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:border-cyan-400 focus:outline-none resize-none"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:border-cyan-400 focus:outline-none resize-none"
                     placeholder="Tell me about your project..."
                     required
                   ></textarea>
                 </div>
                 <Button
-                  className="w-full bg-cyan-400 hover:bg-cyan-500 text-gray-900 py-3 rounded-lg font-semibold"
+                  className="w-full bg-cyan-400 hover:bg-cyan-500 text-gray-200 py-3 rounded-lg font-semibold"
                   type="submit"
                   disabled={loading}
                 >

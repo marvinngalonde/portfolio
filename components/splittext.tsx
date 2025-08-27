@@ -96,8 +96,8 @@ const SplitText: React.FC<SplitTextProps> = ({
       scrollTrigger: {
         trigger: el,
         start,
-        toggleActions: "play none none none",
-        once: true,
+        toggleActions: "play reverse play reverse", // Changed toggleActions for looping
+        // once: true, // Removed once to allow looping
         onToggle: (self) => {
           scrollTriggerRef.current = self;
         },
@@ -112,6 +112,8 @@ const SplitText: React.FC<SplitTextProps> = ({
         });
         onLetterAnimationComplete?.();
       },
+      repeat: -1, // Added for infinite loop
+      yoyo: true, // Added to play animation forward and backward
     });
 
     tl.set(targets, { ...from, immediateRender: false, force3D: true });
