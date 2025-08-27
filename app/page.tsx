@@ -19,7 +19,8 @@ import React, { useState } from "react"
 import TextType from "@/components/texttype";
 import SplitText from "@/components/splittext";
 import { motion } from "framer-motion";
-import Ballpit from "@/components/ballpit"; 
+import Ballpit from "@/components/ballpit";
+import ProfileCard from "@/components/Components/ProfileCard/ProfileCard";
 
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
@@ -38,7 +39,7 @@ export default function Portfolio() {
 
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<string|null>(null);
+  const [result, setResult] = useState<string | null>(null);
 
   // Animation sequencing for hero texts
   const [showSecond, setShowSecond] = useState(false);
@@ -76,7 +77,7 @@ export default function Portfolio() {
     setSelectedProject(projectUrl);
     setPreview(true);
   };
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -114,7 +115,7 @@ export default function Portfolio() {
       {/* Navigation */}
       <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center">
         {/* Desktop Nav */}
-        <div className="hidden sm:flex pointer-events-auto bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-full shadow-lg px-8 py-3 items-center space-x-8 mx-auto max-w-4xl">
+        <div className="hidden sm:flex pointer-events-auto bg-black backdrop-blur-sm border border-gray-800 rounded-full shadow-lg px-8 py-3 items-center space-x-8 mx-auto max-w-4xl">
           {NAV_ITEMS.map(item => (
             <button
               key={item.id}
@@ -162,25 +163,25 @@ export default function Portfolio() {
         )}
       </nav>
 
-    
+
 
       {/* Hero Section */}
       <section
         id="home"
         className="relative overflow-hidden min-h-screen flex items-center pt-20"
-        // style={{ background: "#0f172a" }} // optional: ensure contrast for balls
+      // style={{ background: "#0f172a" }} // optional: ensure contrast for balls
       >
         {/* Ballpit absolutely fills the section, sits behind content */}
         <div className="absolute inset-y-0 left-1/2 bg-white w-1/2 h-full pointer-events-none z-0">
           <Ballpit
             className="w-full h-full"
-            count={50}
-            gravity={0.01}
+            count={80}
+            gravity={0.08}
             colors={["#06b6d4", "#0ea5e9", "#67e8f9"]}
             friction={0.9975}
             wallbounce={0.95}
-            maxSize={0.5}
-            minSize={0}
+            maxSize={0.7}
+            minSize={0.3}
             size0={0.3}
           />
         </div>
@@ -189,7 +190,7 @@ export default function Portfolio() {
           <div className="space-y-8">
             <div className="space-y-4 text-left">
               <div className="block text-left">
-                <p className="text-xl text-gray-900/80 text-left">Hello, It's Me</p>
+                <p className="text-xl text-gray-900 text-left">Hello, It's Me</p>
               </div>
               <div className="block text-left">
                 <h1 className="text-5xl lg:text-6xl font-bold text-left">Marvin Ngalonde</h1>
@@ -206,12 +207,12 @@ export default function Portfolio() {
               <div className="block text-left">
                 <SplitText
                   text="Highly passionate and driven tech enthusiast with a strong foundation in mobile and web development, specializing in React, Node.js, and modern web technologies."
-                  className="text-gray-900/80 text-lg max-w-md text-left"
+                  className="text-gray-900 text-lg max-w-md text-left"
                   splitType="words"
                   textAlign="left"
                   delay={130}
                   duration={0.7}
-                  
+
                 />
               </div>
             </div>
@@ -259,53 +260,40 @@ export default function Portfolio() {
       </section>
 
 
-      
-  <section id="about"  className="py-20 bg-gray-800/50">
+
+      <section id="about" className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div className="flex justify-center lg:justify-start">
             <div className="hexagon-container-small">
 
-              
-          <div className="flex justify-center lg:justify-end">
-            <motion.div
-              className="hexagon-container"
-              animate={{ y: [0, -20, 0, 20, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
-           
-              <div className="hexagon-image">
-                <Image
-                  src="./me.png"
-                  alt="Marvin Ngalonde"
-                  width={400}
-                  height={400}
-                  className="object-cover"
+
+              <div className="flex items-center justify-center lg:justify-end h-full">
+                <ProfileCard
+                  name=""
+                  title=""
+                  handle="marvin"
+                  status="online"
+                  contactText="contact"
+                  avatarUrl="./my.png"
+                  showUserInfo={true}
+                  enableTilt={true}
+                  enableMobileTilt={false}
+                  onContactClick={() => console.log('Contact clicked')}
                 />
               </div>
-            </motion.div>
-          </div>
-              
-              {/* <div className="hexagon-image-small">
-                <Image
-                  src="./abt.png"
-                  alt="Marvin Ngalonde"
-                  width={300}
-                  height={300}
-                  className="object-cover"
-                />
-              </div> */}
+
             </div>
           </div>
 
-          <div  className="space-y-6">
+          <div className="space-y-6">
             <div>
-              <h2 className="text-4xl font-bold mb-2">
-                About <span className="text-cyan-400">Me</span>
+              <h2 className="text-4xl text-gray-50 font-bold mb-2">
+                About <span className="text-gray-50">Me</span>
               </h2>
               <p className="text-xl text-cyan-400 mb-6">Full Stack Developer!</p>
             </div>
 
-            <p className="text-gray-900/80 leading-relaxed">
+            <p className="text-gray-300/80 leading-relaxed">
               I'm a highly passionate and driven tech enthusiast with over 4 years of experience in mobile and web
               development. I specialize in React, Node.js, and low-code platforms like FlutterFlow, with expertise in
               building cross-platform applications that solve real-world business challenges. I thrive in dynamic
@@ -315,19 +303,19 @@ export default function Portfolio() {
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <span className="text-cyan-400 font-semibold">Location:</span>
-                <p className="text-gray-900/80">Harare, Zimbabwe</p>
+                <p className="text-gray-300/80">Harare, Zimbabwe</p>
               </div>
               <div>
                 <span className="text-cyan-400 font-semibold">Experience:</span>
-                <p className="text-gray-900/80">4+ Years</p>
+                <p className="text-gray-300/80">4+ Years</p>
               </div>
               <div>
                 <span className="text-cyan-400 font-semibold">Email:</span>
-                <p className="text-gray-900/80">ngalondemarvin@gmail.com</p>
+                <p className="text-gray-300/80">ngalondemarvin@gmail.com</p>
               </div>
               <div>
                 <span className="text-cyan-400 font-semibold">Phone:</span>
-                <p className="text-gray-900/80">+263 787 062 575</p>
+                <p className="text-gray-300/80">+263 787 062 575</p>
               </div>
             </div>
 
@@ -347,18 +335,18 @@ export default function Portfolio() {
           </div>
 
           <div className="space-y-8">
-            <Card className="bg-gray-800/50 elevation-2 shadow-4 p-8">
+            <Card className="bg-black elevation-2 shadow-4 p-8">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-semibold text-cyan-400">Full Stack Developer</h3>
                   <p className="text-lg text-white">Kimtronix Global</p>
                 </div>
-                <div className="text-gray-900">
+                <div className="text-gray-200">
                   <p>January 2023 – Present</p>
                   <p>Harare, Zimbabwe</p>
                 </div>
               </div>
-              <ul className="text-gray-900/80 space-y-2">
+              <ul className="text-gray-300/80 space-y-2">
                 <li>
                   • Developed and maintained cross-platform web applications using React, Node.js, and modern web
                   technologies
@@ -371,36 +359,36 @@ export default function Portfolio() {
               </ul>
             </Card>
 
-            <Card className="bg-gray-800/50 elevation-2 shadow-4 p-8">
+            <Card className="bg-black elevation-2 shadow-4 p-8">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-semibold text-cyan-400">Mobile App Developer</h3>
                   <p className="text-lg text-white">CyberSeIp Incorporation</p>
                 </div>
-                <div className="text-gray-900">
+                <div className="text-gray-200">
                   <p>October 2024 – Present</p>
                   <p>Harare, Zimbabwe</p>
                 </div>
               </div>
-              <ul className="text-gray-900/80 space-y-2">
+              <ul className="text-gray-300/80 space-y-2">
                 <li>• Developed mobile applications using Flutter and FlutterFlow with cross-platform compatibility</li>
                 <li>• Managed integration and linking of applications with Supabase backend</li>
                 <li>• Contributed to the full mobile app development lifecycle, from concept to deployment</li>
               </ul>
             </Card>
 
-            <Card className="bg-gray-800/50 border-none elevation-2 shadow-4 p-8">
+            <Card className="bg-black border-none elevation-2 shadow-4 p-8">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-semibold text-cyan-400">Web Developer</h3>
                   <p className="text-lg text-white">Verdsoft Private Limited</p>
                 </div>
-                <div className="text-gray-900">
+                <div className="text-gray-200">
                   <p>January 2021 – December 2023</p>
                   <p>Harare, Zimbabwe</p>
                 </div>
               </div>
-              <ul className="text-gray-900/80 space-y-2">
+              <ul className="text-gray-300/80 space-y-2">
                 <li>• Developed web applications using PHP, Python scripting, HTML, CSS, and JavaScript</li>
                 <li>• Implemented responsive and user-friendly interfaces using fundamental web technologies</li>
                 <li>• Collaborated on various web projects, contributing to design, development, and testing phases</li>
@@ -422,7 +410,7 @@ export default function Portfolio() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-cyan-400">Frontend</h3>
-              <div className="space-y-2 text-gray-900/80">
+              <div className="space-y-2 text-gray-900">
                 <p>ReactJS</p>
                 <p>NextJS</p>
                 <p>TypeScript</p>
@@ -433,7 +421,7 @@ export default function Portfolio() {
             </div>
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-cyan-400">Backend</h3>
-              <div className="space-y-2 text-gray-900/80">
+              <div className="space-y-2 text-gray-900">
                 <p>Node.js</p>
                 <p>Django</p>
                 <p>Flask</p>
@@ -444,7 +432,7 @@ export default function Portfolio() {
             </div>
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-cyan-400">Databases</h3>
-              <div className="space-y-2 text-gray-900/80">
+              <div className="space-y-2 text-gray-900">
                 <p>MySQL</p>
                 <p>PostgreSQL</p>
                 <p>MongoDB</p>
@@ -454,7 +442,7 @@ export default function Portfolio() {
             </div>
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-cyan-400">Tools</h3>
-              <div className="space-y-2 text-gray-900/80">
+              <div className="space-y-2 text-gray-900">
                 <p>Docker</p>
                 <p>Vercel</p>
                 <p>GitHub Actions</p>
@@ -466,10 +454,10 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section id="portfolio" className="py-20 bg-gray-800/50">
+      <section id="portfolio" className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-4xl text-white font-bold mb-4">
               Latest <span className="text-cyan-400">Projects</span>
             </h2>
           </div>
@@ -486,8 +474,8 @@ export default function Portfolio() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl text-gray-900/80 font-semibold mb-2">Neocentric Interiors</h3>
-                <p className="text-gray-900/80 mb-4">
+                <h3 className="text-xl text-gray-300/80 font-semibold mb-2">Neocentric Interiors</h3>
+                <p className="text-gray-300/80 mb-4">
                   Modern web application built with React, TypeScript, and TailwindCSS for interior design showcase.
                 </p>
                 <div className="flex items-center justify-between">
@@ -521,7 +509,7 @@ export default function Portfolio() {
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Node.js</span>
                   </div>
 
-                  <ExternalLink size={20} onClick={() => handleProjectClick('https://marvinngalonde.github.io/royalshaven/')} className="text-gray-900/80 group-hover:text-cyan-400 transition-colors" />
+                  <ExternalLink size={20} onClick={() => handleProjectClick('https://marvinngalonde.github.io/royalshaven/')} className="text-gray-300/80 group-hover:text-cyan-400 transition-colors" />
 
 
                 </div>
@@ -554,7 +542,7 @@ export default function Portfolio() {
               </div>
             </Card>
 
-        
+
 
             <Card className="bg-white border-gray-200 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
               <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
@@ -576,7 +564,7 @@ export default function Portfolio() {
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Flutter</span>
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Supabase</span>
                   </div>
-                  
+
                   <ExternalLink size={20} className="text-gray-900 group-hover:text-cyan-400 transition-colors" />
                 </div>
               </div>
@@ -608,14 +596,14 @@ export default function Portfolio() {
               </div>
             </Card>
 
-          
+
 
 
           </div>
         </div>
       </section>
 
-      
+
 
 
       {/* Contact Section */}
@@ -678,7 +666,7 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <Card className="bg-gray-800/50 border-none p-8">
+            <Card className="bg-black border-none p-8">
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
@@ -746,7 +734,7 @@ export default function Portfolio() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-gray-800">
+      <footer className="py-8 border-t bg-black border-gray-800">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-gray-400">© 2025 Marvin Ngalonde. All rights reserved.</p>
         </div>
@@ -768,7 +756,7 @@ export default function Portfolio() {
           )}
         </DialogContent>
       </Dialog>
-   
+
 
     </div>
   )
