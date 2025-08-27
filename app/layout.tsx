@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Marvin Ngalonde - Full Stack Developer",
   description:
     "Portfolio of Marvin Ngalonde - Full Stack Developer specializing in React, Node.js, and modern web technologies",
-  generator: "v0.app",
+  
 }
 
 export default function RootLayout({

@@ -110,7 +110,7 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen text-gray-900">
       {/* Navigation */}
       <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center">
         {/* Desktop Nav */}
@@ -168,21 +168,24 @@ export default function Portfolio() {
       <section
         id="home"
         className="relative overflow-hidden min-h-screen flex items-center pt-20"
-        style={{ background: "#0f172a" }} // optional: ensure contrast for balls
+        // style={{ background: "#0f172a" }} // optional: ensure contrast for balls
       >
         {/* Ballpit absolutely fills the section, sits behind content */}
-        <div className="absolute inset-0 bg-white w-full h-full pointer-events-none z-0">
+        <div className="absolute inset-y-0 left-1/2 bg-white w-1/2 h-full pointer-events-none z-0">
           <Ballpit
             className="w-full h-full"
-            count={20}
-            gravity={0}
+            count={50}
+            gravity={0.01}
             colors={["#06b6d4", "#0ea5e9", "#67e8f9"]}
             friction={0.9975}
             wallbounce={0.95}
+            maxSize={0.5}
+            minSize={0}
+            size0={0.3}
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto  px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4 text-left">
               <div className="block text-left">
@@ -196,7 +199,7 @@ export default function Portfolio() {
                   text="And I'm a Full Stack Developer"
                   className="text-2xl text-left"
                   splitType="words"
-                  delay={100}
+                  delay={130}
                   duration={0.7}
                 />
               </div>
@@ -206,7 +209,7 @@ export default function Portfolio() {
                   className="text-gray-900/80 text-lg max-w-md text-left"
                   splitType="words"
                   textAlign="left"
-                  delay={110}
+                  delay={130}
                   duration={0.7}
                   
                 />
@@ -252,13 +255,24 @@ export default function Portfolio() {
             </a>
           </div>
 
+        </div>
+      </section>
+
+
+      
+  <section id="about"  className="py-20 bg-gray-800/50">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="flex justify-center lg:justify-start">
+            <div className="hexagon-container-small">
+
+              
           <div className="flex justify-center lg:justify-end">
             <motion.div
               className="hexagon-container"
               animate={{ y: [0, -20, 0, 20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
-              {/* <div className="hexagon-glow"></div> */}
+           
               <div className="hexagon-image">
                 <Image
                   src="./me.png"
@@ -270,17 +284,8 @@ export default function Portfolio() {
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-
-      
-  <section id="about"  className="py-20 bg-gray-800/50">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="flex justify-center lg:justify-start">
-            <div className="hexagon-container-small">
-              {/* <div className="hexagon-glow-small"></div> */}
-              <div className="hexagon-image-small">
+              
+              {/* <div className="hexagon-image-small">
                 <Image
                   src="./abt.png"
                   alt="Marvin Ngalonde"
@@ -288,7 +293,7 @@ export default function Portfolio() {
                   height={300}
                   className="object-cover"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
 
