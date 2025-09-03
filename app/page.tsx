@@ -113,7 +113,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen text-gray-900">
       {/* Navigation */}
-      <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center">
+      <nav className="fixed top-6 left-0 right-0 z-[100] flex justify-center">
         {/* Desktop Nav */}
         <div className="hidden sm:flex pointer-events-auto bg-black backdrop-blur-sm border border-gray-800 rounded-full shadow-lg px-8 py-3 items-center space-x-8 mx-auto max-w-4xl">
           {NAV_ITEMS.map(item => (
@@ -132,35 +132,38 @@ export default function Portfolio() {
           ))}
         </div>
         {/* Mobile Nav */}
-        <div className="sm:hidden pointer-events-auto w-full flex justify-between items-center px-4 py-3 bg-gray-900/80 border border-gray-800 rounded-full shadow-lg mx-2">
-          <span className="font-bold text-lg text-cyan-400">Marvin</span>
-          <button
-            onClick={() => setMobileNavOpen(!mobileNavOpen)}
-            className="text-cyan-400 focus:outline-none"
-            aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
-          >
-            {mobileNavOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-        {/* Mobile Dropdown */}
-        {mobileNavOpen && (
-          <div className="sm:hidden absolute top-16 left-0 right-0 mx-2 bg-gray-900/95 border border-gray-800 rounded-xl shadow-lg flex flex-col items-center space-y-2 py-4 z-50 animate-fade-in">
-            {NAV_ITEMS.map(item => (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`w-full text-center transition-colors px-4 py-2 rounded-lg font-medium
-                  ${activeSection === item.id
-                    ? " text-cyan-400 "
-                    : "text-gray-300 hover:text-cyan-400"}
-                `}
-                style={{ outline: "none", border: "none", background: "none" }}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        )}
+<div className="sm:hidden fixed top-0 left-0 right-0 z-50">
+  <div className="flex justify-between items-center px-4 py-3 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 shadow-lg">
+    <span className="font-bold text-lg text-cyan-400">Marvin</span>
+    <button
+      onClick={() => setMobileNavOpen(!mobileNavOpen)}
+      className="text-cyan-400 focus:outline-none p-2"
+      aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
+    >
+      {mobileNavOpen ? <X size={28} /> : <Menu size={28} />}
+    </button>
+  </div>
+  
+  {/* Mobile Dropdown */}
+  {mobileNavOpen && (
+    <div className="absolute top-full left-0 right-0 bg-gray-900/95 border-b border-gray-800 shadow-lg flex flex-col items-center space-y-0 py-2 z-50 backdrop-blur-sm">
+      {NAV_ITEMS.map(item => (
+        <button
+          key={item.id}
+          onClick={() => handleNavClick(item.id)}
+          className={`w-full text-center transition-colors px-4 py-4 font-medium
+            ${activeSection === item.id
+              ? "text-cyan-400 bg-gray-800/50"
+              : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/30"}
+          `}
+          style={{ outline: "none", border: "none" }}
+        >
+          {item.label}
+        </button>
+      ))}
+    </div>
+  )}
+</div>
       </nav>
 
 
@@ -172,11 +175,11 @@ export default function Portfolio() {
       // style={{ background: "#0f172a" }} // optional: ensure contrast for balls
       >
         {/* Ballpit absolutely fills the section, sits behind content */}
-        <div className="absolute inset-y-0 left-1/2 bg-white w-1/2 h-full pointer-events-none z-0">
+        <div className="absolute inset-0 bg-white w-full h-full pointer-events-none z-0">
           <Ballpit
             className="w-full h-full"
             count={80}
-            gravity={0.08}
+            gravity={0.18}
             colors={["#06b6d4", "#0ea5e9", "#67e8f9"]}
             friction={0.9975}
             wallbounce={0.95}
@@ -207,7 +210,7 @@ export default function Portfolio() {
               <div className="block text-left">
                 <SplitText
                   text="Highly passionate and driven tech enthusiast with a strong foundation in mobile and web development, specializing in React, Node.js, and modern web technologies."
-                  className="text-gray-900 text-lg max-w-md text-left"
+                  className="text-gray-900 text-lg text-left"
                   splitType="words"
                   textAlign="left"
                   delay={130}
@@ -294,10 +297,7 @@ export default function Portfolio() {
             </div>
 
             <p className="text-gray-300/80 leading-relaxed">
-              I'm a highly passionate and driven tech enthusiast with over 4 years of experience in mobile and web
-              development. I specialize in React, Node.js, and low-code platforms like FlutterFlow, with expertise in
-              building cross-platform applications that solve real-world business challenges. I thrive in dynamic
-              environments and continuously explore emerging technologies to deliver innovative solutions.
+              I'm a highly passionate and driven tech enthusiast with a solid foundation in mobile and web development. Proficient in full-stack development, with hands-on experience in building cross-platform web applications, designing front-end and back-end logic, and addressing real-world business challenges. Skilled in technologies such as React, Next.js, FastAPI, ORMs, CI/CD, and TypeScript. Eager to leverage expertise in dynamic environments to embrace challenges and continuously explore emerging technologies.
             </p>
 
             <div className="grid grid-cols-2 gap-4 text-sm">
@@ -412,10 +412,12 @@ export default function Portfolio() {
               <h3 className="text-xl font-semibold text-cyan-400">Frontend</h3>
               <div className="space-y-2 text-gray-900">
                 <p>ReactJS</p>
+                <p>TanStack Query</p>
                 <p>NextJS</p>
                 <p>TypeScript</p>
-                <p>HTML/CSS</p>
-                <p>JavaScript</p>
+                <p>Redux</p>
+                <p>TailwindCSS</p>
+                <p>Shadcn UI</p>
                 <p>FlutterFlow</p>
               </div>
             </div>
@@ -423,6 +425,9 @@ export default function Portfolio() {
               <h3 className="text-xl font-semibold text-cyan-400">Backend</h3>
               <div className="space-y-2 text-gray-900">
                 <p>Node.js</p>
+                <p>FastAPI</p>
+                <p>ORMs</p>
+                <p>Next.js</p>
                 <p>Django</p>
                 <p>Flask</p>
                 <p>PHP</p>
@@ -438,6 +443,7 @@ export default function Portfolio() {
                 <p>MongoDB</p>
                 <p>Supabase</p>
                 <p>Firebase</p>
+                <p>SQLite</p>
               </div>
             </div>
             <div className="space-y-4">
@@ -446,6 +452,9 @@ export default function Portfolio() {
                 <p>Docker</p>
                 <p>Vercel</p>
                 <p>GitHub Actions</p>
+                <p>CI/CD</p>
+                <p>Git</p>
+                <p>SwaggerUI</p>
                 <p>Jest</p>
                 <p>Testing Library</p>
               </div>

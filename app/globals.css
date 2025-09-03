@@ -242,17 +242,17 @@ html {
   }
 
   .hexagon-container-small {
-    width: 250px;
-    height: 250px;
+    width: 60vw; /* Adjust for mobile responsiveness */
+    height: 60vw; /* Adjust for mobile responsiveness */
   }
 
   .hexagon-glow-small {
-    width: 230px;
-    height: 230px;
+    width: 55vw;
+    height: 55vw;
   }
 
   .hexagon-image-small {
-    width: 210px;
-    height: 210px;
+    width: 50vw;
+    height: 50vw;
   }
 }
