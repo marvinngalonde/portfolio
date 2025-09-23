@@ -209,7 +209,7 @@ export default function Portfolio() {
               </div>
               <div className="block text-left">
                 <SplitText
-                  text="Highly passionate and driven tech enthusiast with a strong foundation in mobile and web development, specializing in React, Node.js, and modern web technologies."
+                  text="Highly passionate and driven tech enthusiast with a strong foundation in mobile and full stack web development, I bring a unique blend of creativity and technical expertise to every project."
                   className="text-gray-900 text-lg text-left"
                   splitType="words"
                   textAlign="left"
@@ -483,16 +483,17 @@ export default function Portfolio() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl text-gray-300/80 font-semibold mb-2">Neocentric Interiors</h3>
-                <p className="text-gray-300/80 mb-4">
+                <h3 className="text-xl text-black font-semibold mb-2">Neocentric Interiors</h3>
+                <p className="text-gray-900 mb-4">
                   Modern web application built with React, TypeScript, and TailwindCSS for interior design showcase.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex space-x-2">
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">React</span>
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">TypeScript</span>
+                    <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">TailwindCSS</span>
                   </div>
-                  <ExternalLink onClick={() => handleProjectClick('https://marvinngalonde.github.io/neocentric-interiors/')} size={20} className="text-gray-900 group-hover:text-cyan-400 transition-colors" />
+                  <ExternalLink onClick={() => handleProjectClick('https://neocentricinteriors.co.zw')} size={20} className="text-gray-900 group-hover:text-cyan-400 transition-colors" />
                 </div>
               </div>
             </Card>
@@ -508,17 +509,54 @@ export default function Portfolio() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl text-white font-semibold mb-2">Royals Haven</h3>
+                <h3 className="text-xl text-black font-semibold mb-2">Royals Haven</h3>
                 <p className="text-gray-900 mb-4">
                   Modern web application built with React, TypeScript, and TailwindCSS for interior design showcase.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex space-x-2">
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">React</span>
-                    <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Node.js</span>
+                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">TypeScript</span>
+                   <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">TailwindCSS</span>
                   </div>
 
                   <ExternalLink size={20} onClick={() => handleProjectClick('https://marvinngalonde.github.io/royalshaven/')} className="text-gray-300/80 group-hover:text-cyan-400 transition-colors" />
+
+
+                </div>
+              </div>
+            </Card>
+
+            <Card className="bg-white border-gray-200 overflow-hidden group hover:border-cyan-400 transition-all duration-300">
+              <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
+                <Image
+                  src="./stands.png"
+                  alt="Web Development"
+                  width={300}
+                  height={200}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl text-black font-semibold mb-2">City Stands Registration System</h3>
+                <p className="text-gray-900 mb-4">
+                  Modern Web application built with React Frontend and FastAPI backend.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col space-y-2">
+                    <div className="flex space-x-2">
+                      <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">React</span>
+                      <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Typescript</span>
+                      <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">TanStack Query</span>
+                    </div>
+                    <div className="flex space-x-2">
+                         <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">PostgreSQL</span>
+                      <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">SQLAlchemy</span>
+                      <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Alembic</span>
+                    </div>
+                  </div>
+
+                  <ExternalLink size={20} onClick={() => handleProjectClick('https://stand.verdsoft.co.zw')} className="text-gray-300/80 group-hover:text-cyan-400 transition-colors" />
 
 
                 </div>
@@ -536,15 +574,16 @@ export default function Portfolio() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl text-white font-semibold mb-2">BMS & POS</h3>
+                <h3 className="text-xl text-black font-semibold mb-2">BMS & POS</h3>
                 <p className="text-gray-900 mb-4">
-                  Comprehensive POS and business management solution with React, NextJS, and MySQL.
+                  Comprehensive POS and business management solution with React, NextJS, MySQL and Prisma ORM.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex space-x-2">
-                    <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Next.js</span>
+                    <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">NextJs</span>
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">TypeScript</span>
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">MySQL</span>
+                    <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Prisma</span>
                   </div>
                   <ExternalLink size={20} className="text-gray-900 group-hover:text-cyan-400 transition-colors" />
                 </div>
@@ -564,13 +603,14 @@ export default function Portfolio() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl text-white font-semibold mb-2">Mobile POS</h3>
+                <h3 className="text-xl text-black font-semibold mb-2">Mobile POS</h3>
                 <p className="text-gray-900 mb-4">
                   Cross-platform mobile point-of-sale application built with Flutter and Supabase backend.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex space-x-2">
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Flutter</span>
+                    <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">PostgreSQL</span>
                     <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs rounded">Supabase</span>
                   </div>
 
@@ -590,7 +630,7 @@ export default function Portfolio() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl text-white font-semibold mb-2">Gym Management System Python Intergration</h3>
+                <h3 className="text-xl text-black font-semibold mb-2">Gym Management System Python Intergration</h3>
                 <p className="text-gray-900 mb-4">
                   Complete gym management solution with member tracking, built with PHP, Python, and MySQL.
                 </p>
