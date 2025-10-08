@@ -334,32 +334,25 @@ export default function Portfolio() {
             </h2>
           </div>
 
-          <div className="space-y-8">
-            <Card className="bg-black elevation-2 shadow-4 p-8">
+          <Card className="bg-black elevation-2 shadow-4 p-8 mb-4">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
-                  <h3 className="text-xl font-semibold text-cyan-400">Full Stack Developer</h3>
-                  <p className="text-lg text-white">Kimtronix Global</p>
+                  <h3 className="text-xl font-semibold text-cyan-400">Full Stack Engineer </h3>
+                  <p className="text-lg text-white">Valhko</p>
                 </div>
                 <div className="text-gray-200">
-                  <p>January 2023 – Present</p>
-                  <p>Harare, Zimbabwe</p>
+                  <p>September  2025 – Present</p>
+                  <p>Remote</p>
                 </div>
               </div>
               <ul className="text-gray-300/80 space-y-2">
-                <li>
-                  • Developed and maintained cross-platform web applications using React, Node.js, and modern web
-                  technologies
-                </li>
-                <li>
-                  • Designed and implemented robust front-end and back-end logic, ensuring seamless user experiences
-                </li>
-                <li>• Contributed to full-featured apps, successfully addressing real-world business challenges</li>
-                <li>• Collaborated with teams to deliver high-quality software solutions on schedule</li>
+                <li>• Developing an AI Marketplace with focus on the Front-end and Backend endpoints. I collaborate with teams to deliver the software as expected and  on schedule.</li>
+                <li>• Major technologies used include Nextjs, FastAPI ,React Query and Jest.</li>
+                
               </ul>
             </Card>
 
-            <Card className="bg-black elevation-2 shadow-4 p-8">
+          <Card className="bg-black elevation-2 shadow-4 p-8 mb-4">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-semibold text-cyan-400">Mobile App Developer</h3>
@@ -377,6 +370,33 @@ export default function Portfolio() {
               </ul>
             </Card>
 
+          <div className="space-y-8">
+            <Card className="bg-black elevation-2 shadow-4 p-8">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-cyan-400">Full Stack Developer</h3>
+                  <p className="text-lg text-white">Kimtronix Global</p>
+                </div>
+                <div className="text-gray-200">
+                  <p>January 2023 – 2025</p>
+                  <p>Harare, Zimbabwe</p>
+                </div>
+              </div>
+              <ul className="text-gray-300/80 space-y-2">
+                <li>
+                  • Developed and maintained cross-platform web applications using React, Node.js, and modern web
+                  technologies
+                </li>
+                <li>
+                  • Designed and implemented robust front-end and back-end logic, ensuring seamless user experiences
+                </li>
+                <li>• Contributed to full-featured apps, successfully addressing real-world business challenges</li>
+                <li>• Collaborated with teams to deliver high-quality software solutions on schedule</li>
+              </ul>
+            </Card>
+
+            
+
             <Card className="bg-black border-none elevation-2 shadow-4 p-8">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
@@ -384,14 +404,16 @@ export default function Portfolio() {
                   <p className="text-lg text-white">Verdsoft Private Limited</p>
                 </div>
                 <div className="text-gray-200">
-                  <p>January 2021 – December 2023</p>
+                  <p>January 2021 – Present</p>
                   <p>Harare, Zimbabwe</p>
                 </div>
               </div>
               <ul className="text-gray-300/80 space-y-2">
-                <li>• Developed web applications using PHP, Python scripting, HTML, CSS, and JavaScript</li>
-                <li>• Implemented responsive and user-friendly interfaces using fundamental web technologies</li>
-                <li>• Collaborated on various web projects, contributing to design, development, and testing phases</li>
+                <li>• Developing commercial full stack web applications using various Front-end and Backend tech stacks.</li>
+                <li>• Also develop plays major role in the actual development of React Native Mobile Applications.
+
+</li>
+                
               </ul>
             </Card>
           </div>
