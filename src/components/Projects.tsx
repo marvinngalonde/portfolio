@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Play, Code } from 'lucide-react';
+import {  Play, Code } from 'lucide-react';
 import neo from '../assets/neo.png'
 import gym from '../assets/gym.png'
 import posy from '../assets/posy.png'
