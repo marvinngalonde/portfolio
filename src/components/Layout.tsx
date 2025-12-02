@@ -9,12 +9,7 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, activeFile, setActiveFile }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = React.useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth >= 768;
-    }
-    return true;
-  });
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
 
   const files = [
     { name: 'home.tsx', icon: <FileCode size={18} className="text-blue-400" />, id: 'home' },

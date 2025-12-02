@@ -33,11 +33,11 @@ const experiences = [
   {
     id: 4,
     role: "Full Stack Engineer",
-    company: "Verdsoft Private Limited",
+    company: "Verdsoft Enterprises",
     location: "Harare, Zimbabwe",
     period: "January 2021 – January 2025 (Remote)",
     description: "Worked as Front-end, Backend and DevOps Engineer on various custom software projects for client companies. Gained vast development experience across multiple domains and technologies.",
-    stack: ["React", "Node.js", "DevOps", "Custom Solutions"]
+    stack: ["React", "Node.js","ReactNative","FastAPI","NestJS","PostgreSQL", "DevOps", "Custom Solutions"]
   }
 ];
 

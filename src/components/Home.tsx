@@ -8,7 +8,7 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ setActiveFile }) => {
   const [text, setText] = useState('');
-  const fullText = "Highly passionate and driven tech enthusiast with a solid foundation in mobile and web development.\nProficient in full-stack development with hands-on experience in building cross-platform applications.\nSkilled in front-end and back-end logic, LLMs Integration, and addressing real-world business challenges.\nEager to leverage expertise in dynamic environments and continuously explore emerging technologies.";
+  const fullText = "I am a highly passionate and driven tech enthusiast with a solid foundation in mobile and web development.\nProficient in full-stack development with hands-on experience in building cross-platform applications.\nSkilled in front-end and back-end logic, LLMs Integration, and addressing real-world business challenges.\nEager to leverage expertise in dynamic environments and continuously explore emerging technologies.";
 
   useEffect(() => {
     let index = 0;
@@ -34,7 +34,7 @@ const Home: React.FC<HomeProps> = ({ setActiveFile }) => {
           <span>Full Stack Developer</span>
         </h2>
         <div className="mt-2 text-gray-500 font-mono text-sm">
-          Harare, Zimbabwe • 4+ Years Experience
+          Harare, Zimbabwe • 5 Years Experience
         </div>
       </div>
 
@@ -69,7 +69,7 @@ const Home: React.FC<HomeProps> = ({ setActiveFile }) => {
           </div>
           <div className="pl-4">
             <span className="text-red-400 mr-2">skills:</span>
-            <span className="text-purple-400">['React', 'Next.js', 'FastAPI', 'TypeScript', 'AWS', 'Azure', 'Docker', 'Kubernetes']</span>,
+            <span className="text-purple-400">['React', 'Next.js', 'FastAPI', 'TypeScript','NestJS','PostgreSQL', 'AWS', 'Azure', 'Docker', 'Kubernetes']</span>,
           </div>
           <div className="pl-4">
             <span className="text-red-400 mr-2">openToWork:</span>

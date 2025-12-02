@@ -1,9 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Play, Code } from 'lucide-react';
-import projectInterior from '../assets/project-interior.png';
-import projectDashboard from '../assets/project-dashboard.png';
-import projectMobile from '../assets/project-mobile.png';
+import neo from '../assets/neo.png'
+import gym from '../assets/gym.png'
+import posy from '../assets/posy.png'
+import shop from '../assets/shop.jpg'
+import tfcdash from '../assets/tfcdash.png'
+import foam from '../assets/foam.png'
+import tfcapp from '../assets/tfcapp.png'
 
 const projects = [
   {
@@ -12,9 +16,9 @@ const projects = [
     description: "Modern web application for interior design showcase and portfolio.",
     tech: ["React", "TypeScript", "TailwindCSS"],
     status: "Live",
-    repo: "github.com/marvin/neocentric",
-    link: "neocentric.demo.com",
-    image: projectInterior
+    repo: "",
+    link: "neocentricinteriors.co.zw/",
+    image: neo
   },
   {
     id: 2,
@@ -22,9 +26,9 @@ const projects = [
     description: "Full-featured CMS for content creation and management.",
     tech: ["React", "Supabase", "TypeScript"],
     status: "Live",
-    repo: "github.com/marvin/cms",
+    repo: "ministry-hub-admin.onrender.com/dashboard",
     link: "cms.demo.com",
-    image: projectDashboard
+    image: tfcdash
   },
   {
     id: 3,
@@ -33,8 +37,8 @@ const projects = [
     tech: ["PHP", "Python", "MySQL"],
     status: "Completed",
     repo: "github.com/marvin/gym-system",
-    link: "gym-system.demo.com",
-    image: projectDashboard
+    link: "#",
+    image: gym
   },
   {
     id: 4,
@@ -42,9 +46,9 @@ const projects = [
     description: "Mobile application for booking and managing carwash services.",
     tech: ["React Native", "Firebase", "TypeScript"],
     status: "Live",
-    repo: "github.com/marvin/carwash-app",
-    link: "carwash.demo.com",
-    image: projectMobile
+    repo: "",
+    link: "",
+    image: foam
   },
   {
     id: 5,
@@ -52,9 +56,9 @@ const projects = [
     description: "Cross-platform mobile point-of-sale application with real-time sync.",
     tech: ["Flutter", "Supabase", "Firebase"],
     status: "Live",
-    repo: "github.com/marvin/mobile-pos",
-    link: "mobile-pos.demo.com",
-    image: projectMobile
+    repo: "",
+    link: "",
+    image: shop
   },
   {
     id: 6,
@@ -62,9 +66,9 @@ const projects = [
     description: "Comprehensive business management and point-of-sale system.",
     tech: ["React", "Next.js", "Redux Toolkit", "MySQL"],
     status: "Live",
-    repo: "github.com/marvin/bms-pos",
-    link: "bms.demo.com",
-    image: projectDashboard
+    repo: "",
+    link: "http://posy.62.169.19.198.sslip.io/",
+    image: posy
   },
   {
     id: 7,
@@ -72,9 +76,9 @@ const projects = [
     description: "Mobile platform for sharing and discovering community resources.",
     tech: ["React Native", "Supabase", "TypeScript"],
     status: "Live",
-    repo: "github.com/marvin/resource-sharing",
-    link: "resource-app.demo.com",
-    image: projectMobile
+    repo: "",
+    link: "",
+    image: tfcapp
   }
 ];
 
@@ -115,7 +119,7 @@ const Projects: React.FC = () => {
               <img
                 src={project.image}
                 alt={project.name}
-                className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                className="w-full h-full object-cover filter  group-hover:grayscale-0 transition-all duration-500"
               />
             </div>
 
@@ -130,7 +134,9 @@ const Projects: React.FC = () => {
                   <span key={t} className="text-terminal-green ml-1">@{t}</span>
                 ))}
               </div>
-              <div className="text-gray-500 text-sm"> */</div>
+              <div className="text-gray-500 text-sm"> */
+                
+              </div>
 
               <div className="mt-auto pt-4 pl-4 border-l-2 border-gray-800 group-hover:border-terminal-green transition-colors">
                 <div className="flex items-center space-x-4 mt-4">
@@ -140,10 +146,10 @@ const Projects: React.FC = () => {
                       <span>Run Preview</span>
                     </a>
                   )}
-                  <a href="#" className="flex items-center text-sm text-gray-400 hover:text-white transition-colors cursor-not-allowed opacity-50">
+                  {/* <a href="#" className="flex items-center text-sm text-gray-400 hover:text-white transition-colors cursor-not-allowed opacity-50">
                     <Github size={14} className="mr-1" />
                     <span>Private Repo</span>
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>

@@ -70,8 +70,8 @@ const Contact: React.FC = () => {
           <p>Direct Transmission Line: <span className="text-gray-300">+263 787 062 575</span></p>
           <p>Secure Protocol: <span className="text-gray-300">ngalondemarvin@gmail.com</span></p>
           <p>Location: <span className="text-gray-300">Harare, Zimbabwe</span></p>
-          <p>GitHub: <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-terminal-blue hover:text-terminal-green transition-colors">github.com/yourusername</a></p>
-          <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="text-terminal-blue hover:text-terminal-green transition-colors">linkedin.com/in/yourprofile</a></p>
+          <p>GitHub: <a href="https://github.com/marvinngalonde" target="_blank" rel="noopener noreferrer" className="text-terminal-blue hover:text-terminal-green transition-colors">github.com/marvinngalonde</a></p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/ngalonde-marvin-393555331/" target="_blank" rel="noopener noreferrer" className="text-terminal-blue hover:text-terminal-green transition-colors">linkedin.com/in/ngalonde-marvin-393555331</a></p>
         </div>
       </div>
 
